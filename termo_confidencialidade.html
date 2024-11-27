@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termo de Confidencialidade e Consentimento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .termo {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+        .assinaturas {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .assinaturas input {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .botoes {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .botoes button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .concordo {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .nao-concordo {
+            background-color: #dc3545;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Termo de Confidencialidade e Consentimento</h1>
+    <div class="termo">
+        <p>1. A CONVIDADA compromete-se a não compartilhar, divulgar ou comentar com terceiros quaisquer informações, ações ou conversas ocorridas nas seguintes situações:</p>
+        <ul>
+            <li>1.1. Interações remotas (via celular, chamadas, mensagens, etc.);</li>
+            <li>1.2. Encontros presenciais;</li>
+            <li>1.3. Qualquer outro meio de comunicação.</li>
+        </ul>
+        <p>2. O ANFITRIÃO poderá encerrar o vínculo entre as partes caso haja suspeita ou confirmação de vazamento de informações.</p>
+        <p>3. Em qualquer questionamento externo, o ANFITRIÃO negará qualquer informação ou evento relacionado ao acordo.</p>
+        
+        <h3>4. Consentimento e Limites</h3>
+        <p>4.1. Todos os toques e o uso de objetos durante os encontros só ocorrerão mediante consentimento explícito da CONVIDADA.</p>
+        <p>4.2. O ANFITRIÃO garante que todos os objetos utilizados são devidamente limpos e esterilizados antes do uso.</p>
+        
+        <h3>5. Relacionamento e Expectativas</h3>
+        <p>5.1. As partes concordam que não haverá, antes, durante ou após o encontro, qualquer vínculo amoroso ou afetivo, como namoro ou ficante.</p>
+        <p>5.2. O vínculo será encerrado caso haja expectativas de relacionamento futuro.</p>
+        
+        <h3>6. Registro de Imagens e Privacidade</h3>
+        <p>6.1. É estritamente proibido qualquer tipo de registro audiovisual, como gravações, fotografias ou vídeos, durante os encontros.</p>
+        
+        <h3>7. Disposições Gerais</h3>
+        <p>7.1. Este termo entra em vigor a partir da data de sua assinatura e permanecerá válido enquanto perdurar o vínculo entre as partes.</p>
+    </div>
+
+    <div class="assinaturas">
+        <p>Local e Data:</p>
+        <input type="text" id="data" placeholder="Digite o local e a data aqui...">
+
+        <p>Nome do Anfitrião:</p>
+        <input type="text" id="anfitriao" placeholder="Digite o nome do anfitrião...">
+
+        <p>Nome da Convidada:</p>
+        <input type="text" id="convidada" placeholder="Digite o seu nome...">
+    </div>
+
+    <div class="botoes">
+        <button class="concordo" onclick="enviarEmail('Concordo')">Concordo</button>
+        <button class="nao-concordo" onclick="enviarEmail('Não Concordo')">Não Concordo</button>
+    </div>
+
+    <script>
+        function enviarEmail(status) {
+            const data = document.getElementById("data").value;
+            const anfitriao = document.getElementById("anfitriao").value;
+            const convidada = document.getElementById("convidada").value;
+
+            if (data && anfitriao && convidada) {
+                const assunto = encodeURIComponent(`Resposta do Termo - ${status}`);
+                const corpo = encodeURIComponent(
+                    `A convidada ${convidada} ${status.toLowerCase()} o termo.\n\n` +
+                    `Detalhes:\nLocal e Data: ${data}\nAnfitrião: ${anfitriao}`
+                );
+                window.location.href = `mailto:brunohenriqueflor@gmail.com?subject=${assunto}&body=${corpo}`;
+                alert(`Você ${status.toLowerCase()} o termo. Um e-mail será enviado.`);
+            } else {
+                alert("Preencha todos os campos antes de prosseguir.");
+            }
+        }
+    </script>
+</body>
+</html>
